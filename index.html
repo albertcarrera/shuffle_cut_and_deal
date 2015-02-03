@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>The Penguins Band</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.css">
+    <link href="css/lightbox.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pace-theme-loading-bar.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="js/lightbox.min.js"></script>
+    <!-- Scrolling Nav JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/scrolling-nav.js"></script>
+    <script>
+      var apiKey = 'AIzaSyC_jYmIGWX5W5rR82VIc9QwKh_MiNQemco';
+      var calendarId = 'qga3a3c1getc0jcfi77rbmc114@group.calendar.google.com';
+
+      function fetchEvents(callback) {
+          $.ajax({
+            type: 'GET',
+            url: encodeURI('https://www.googleapis.com/calendar/v3/calendars/' 
+                + calendarId + '/events?key=' + apiKey),
+            dataType: 'json',
+            success: function(response) { response.items ? callback(response.items) : callback([]) }
+            })
+      }
+
+      function formatDate(start) {
+          var date = new Date(start.dateTime ? start.dateTime : start.date);
+          var day = date.getDate();
+          var month = date.getMonth() + 1;
+          var year = date.getFullYear();
+          return (day < 10 ? '0' + day : day) + '/' + (month < 10 ? '0' + month : month) + '/' + year; 
+      }
+
+      function formatTime(start) {
+          if (!start.dateTime) { return '' };
+          var date = new Date(start.dateTime);
+          var hours = date.getHours();
+          var mins = date.getMinutes();
+          return (hours < 10 ? '0' + hours : hours) + ':' + (mins < 10 ? '0' + mins : mins);
+      }
+
+      fetchEvents( function(events) {
+          events.sort(function(one, another) {
+            var oneDate = new Date(one.start.dateTime ? one.start.dateTime : one.start.date);
+            var anotherDate = new Date(another.start.dateTime ? another.start.dateTime : another.start.date);
+            return oneDate > anotherDate;
+          }).forEach(function(eachEvent) {
+              var html = '<div class="concert"> <div class="data">'
+                  + formatDate(eachEvent.start)
+                  + '</div> <div class="descripcio">'
+                  + eachEvent.description
+                  + '</div> <div class="lloc">'
+                  + eachEvent.location.replace(', Espanya','')
+                  + '</div> <div class="hora">'
+                  + formatTime(eachEvent.start)
+                  + '</div></div>';
+              $('#calendari').append(html);
+          });
+          $(".concert:odd").addClass("orange");
+      })
+    </script> 
+</head> 
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<div class="container">
+    <nav role="navigation" id="topWrapper" class="navbar navbar-inverse navbar-fixed-top">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-inner">
+            <div class="navbar-header">
+                <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="img/logo_penguins_taronja2.png" class="img-responsive" />
+            </div>
+            <!-- Collection of nav links, forms, and other content for toggling -->
+            <div id="navbarCollapse" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" id="top-menu">
+                    <li class="active"><a  class="page-scroll" href="#home">Home</a></li>
+                      <li><a class="page-scroll" href="#agenda">Agenda</a></li>
+                      <li><a class="page-scroll" href="#photos">Photos/Videos</a></li>
+                      <li><a class="page-scroll" href="#">Press</a></li>
+                      <li><a class="page-scroll" href="#discography">Discography</a></li>
+                </ul>
+                <img src="img/logo_shuffle_blanc2.png" class="img-responsive pull-right imatge_amaga" />
+            </div>
+        </div>
+    </nav>
+    <div class="home" id="home">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <!-- <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="6"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="7"></li>
+          </ol> -->
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <img src="img/slider/sliderPENG1.jpg" alt="The Penguins">
+             <!--  <div class="carousel-caption">
+                The Penguins Band
+              </div> -->
+            </div>
+            <div class="item">
+              <img src="img/slider/sliderPENG2.jpg" alt="The Penguins">
+            </div>
+            <div class="item">
+              <img src="img/slider/sliderPENG3.jpg" alt="The Penguins">
+            </div>
+            <div class="item">
+              <img src="img/slider/sliderPENG4rythm.jpg" alt="The Penguins">
+            </div>
+            <div class="item">
+              <img src="img/slider/sliderPENG5base+TILL.jpg" alt="The Penguins">
+            </div>
+            <div class="item">
+              <img src="img/slider/sliderPENG6pitus.jpg" alt="The Penguins">
+            </div>
+            <div class="item">
+              <img src="img/slider/sliderPENG7veus.jpg" alt="The Penguins">
+            </div>
+            <div class="item">
+              <img src="img/slider/sliderPENG8.jpg" alt="The Penguins">
+            </div>
+          </div>
+          <!-- Controls -->
+          <!-- <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span> -->
+          </a>
+        </div>
+    </div>
+    <div class="scd" id="scd">
+        <div class="titol">
+            <img src="img/imatge_titol.png" class="imatge_amaga" />
+            <div class="text_titol">
+                <div class="pull-left shuffle" style="font-family:bodoni_LT_Poster_Italic; font-size: 21pt;">
+                    Shuffle, Cut & Deal
+                </div>  
+                <div class="pull-right buenri" style="font-family:bodoni_LT_Poster_Italic; font-size: 14pt;">
+                    Buenritmo, 2014
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="esquerra span3">
+                <img class="imatge_disc" src="img/foto_SCD.png" />
+                <div class="spotify">
+                    <iframe src="https://embed.spotify.com/?uri=spotify:album:35AUCdJtvurAvxrtcmoEKe" frameborder="0" allowtransparency="true"></iframe>                
+                </div>
+                <div class="compra">
+                    <a target="_blank" href="http://www.google.es">COMPRA AQUEST DISC</a>
+                </div>
+            </div>
+            <div class="dreta span3">
+                <p>Han passat ja cinc anys des que vam gravar el nostre primer disc, tres anys des que vam engegar el projecte de "Reggae per Xics", i dos des que vam enregistrar el primer treball d'aquest projecte familiar.<br/>
+                De fet, és gràcies als pares i les mares que gaudeixen dels concerts de "Reggae per Xics", un espectacle que havíem destinat als infants, que hem tornat a entrar a l'estudi per enregistrar aquest treball que tens a les mans. Entre ells, els nostres incansables supporters i tots els amants de la música jamaicana, ens han demostrat que el nostre gènere musical encara pot jugar un bon paper en el públic adult. És per això que el títol del disc fa referència a una aposta, arriscada però feta amb la convicció que encara queden molt bones cartes per repartir a la baralla del reggae.</p>
+                <p>Si aconseguim que gaudiu d'aquests deu temes una minúscula part del que nosaltres hem gaudit composant-los i enregistrant-los, aquesta aposta haurà valgut molt la pena.</p>
+                <p>Una forta abraçada des de la taula de joc més càlida de l'àrtic.</p>
+                <span style="font-size:14pt;"><strong>GRAVACIÓ</strong></span>
+                <p>Aquest disc ha estat enregistrat i mesclat per Jaume Figueres als Estudis Ground de Cornellà de Terri durant el mes de juliol del 2013. La masterització l'ha dut a terme Juanjo Muñoz de Catmastering.</p>
+                <p>Bateria: Xavi Haro<br/>
+                Baix: Robert Valls<br/>
+                Guitarra rítmica: Bernat Romagosa<br/>
+                Guitarra melòdica: Oriol Serna<br/>
+                Teclat i cors: Sergi Beltran<br/>
+                Trompeta i percussions: Genís Navarro<br/>
+                Flauta travessera: Albert (Tillo) Carrera<br/>
+                Saxo tenor: Eduard Polls<br/>
+                Saxo alt: Francesc Polls<br/>
+                Veu, trombó i cors: Francesc Puiggròs<br/>
+                Veu i cors: Axel Domingo
+                </p>
+                <strong>Col·laboracions:</strong><br/>
+                <p>Veu a "Thought You Were Stronger": Ramon Mirabet<br/>
+                Percussions a "Thought You Were Stronger" i "You Niggle": Hector Fàbregas<br/>
+                Trombó a "Love or Obsesion": Alba Pujals<br/>
+                Deejay a "Don't be a fool": Dani Wiggle<br/>
+                Mescla dub "Don't be a fool": Chalart58
+                </p>
+                <strong>Agraïments:</strong><br/>
+                <p>A totes les famílies que seguiu el projecte de Reggae per Xics, perquè sou els principals responsables de la motivació que ens ha dut a enregistrar aquest disc. A tots els supporters i seguidors de The Penguins, especialment de Sant Feliu de Llobregat, que porteu anys insistint en que reactivem el projecte nocturn. Aquest disc és per a vosaltres! A tota la gent que promou i estima la música jamaicana a Catalunya. A totes les bandes i Sound Systems de Catalunya, que manteniu viva l'escena. En especial, a les bandes que heu participat al nostre vídeo promocional. Al Jaume Figueres d'Estudis Ground pel seu bon humor, els seus suggeriments, la seva paciència i les seves frases lapidàries. A tots els antics membres de la banda, que no són pocs! Als músics i companys que ens han salvat diversos concerts quan hem necessitat alguna substitució. A la Teteria India, l'Ateneu, i la Ferreteria Guasch de Sant Feliu, que distribuïu desinteressadament els nostres discs.</p>
+                <p>Al Perico, i a Buenritmo, per haver tornat a apostar per nosaltres.</p>
+                <p>Al Ramon Mirabet, per la seva implicació en el disc i tot el temps que va passar amb nosaltres. Al Susu i al King Riulis, per haver tingut el valor de fer-nos de mànagers. Al Dani del Rio (aka Piu) pel videoclip. Al Raül, a la Ari, a l'Helena i al Sancho de Bohkeron. A les nostres famílies i parelles.  Gràcies pel vostre suport, la vostra paciència i les hores que també vosaltres heu dedicat al projecte de The Penguins.</p>
+                <p><strong>Desagraïments.</strong> A Fèlix Millet, José Ignacio Wert, Artur Mas, Emilio Botín i, en general, a tots els que "lluiteu" pels nostres drets!</p>
+            </div>
+        </div>    
+    </div>
+    <div class="agenda" id="agenda">
+        <div class="titol">
+            <img src="img/imatge_titol.png" class="imatge_amaga" />
+            <div class="text_titol">
+                <div class="pull-left shuffle" style="font-family:bodoni_LT_Poster_Italic; font-size: 21pt;">
+                    Agenda
+                </div>  
+                <div class="pull-right buenri" style="font-family:bodoni_LT_Poster_Italic; font-size: 14pt;">
+                    The Penguins Band
+                </div>
+            </div>
+        </div>
+        <div id="calendari">
+          <div class="calendari-titols">
+            <div class="data">DATA</div>
+            <div class="descripcio">DESCRIPCIÓ</div>
+            <div class="lloc">LLOC</div>
+            <div class="hora">HORA</div>
+          </div>
+        </div>
+    </div>
+    <div style="clear:both; padding-bottom:30px;"></div>
+    <div class="photos" id="photos">
+        <div class="titol">
+            <img src="img/imatge_titol.png" class="imatge_amaga" />
+            <div class="text_titol">
+                <div class="pull-left shuffle" style="font-family:bodoni_LT_Poster_Italic; font-size: 21pt;">
+                    Photos/Videos
+                </div>  
+                <div class="pull-right buenri" style="font-family:bodoni_LT_Poster_Italic; font-size: 14pt;">
+                    The Penguins Band
+                </div>
+            </div>
+        </div>
+        <div class="seccio_photos">
+            <div class="photo">
+                <a href="img/album/festa_major_13/1.JPG" rel="lightbox[penguins]" title="Concert Sant Feliu">
+                    <img class="img-responsive" src="img/album/festa_major_13/1.JPG" />
+                </a>
+            </div>
+            <div class="photo foto_mig">
+                <a href="img/album/festa_major_13/2.JPG" rel="lightbox[penguins]" title="Concert Sant Feliu">
+                    <img class="img-responsive" src="img/album/festa_major_13/2.JPG" />
+                </a>
+            </div>
+            <div class="photo">
+                <a href="img/album/festa_major_13/3.JPG" rel="lightbox[penguins]" title="Concert Sant Feliu">
+                    <img class="img-responsive" src="img/album/festa_major_13/3.JPG" />
+                </a>
+            </div>
+            <div class="photo">
+                <a href="img/album/festa_major_13/4.JPG" rel="lightbox[penguins]" title="Concert Sant Feliu">
+                    <img class="img-responsive" src="img/album/festa_major_13/4.JPG" />
+                </a>
+            </div>
+            <div class="photo foto_mig">
+                <a href="img/album/festa_major_13/5.JPG" rel="lightbox[penguins]" title="Concert Sant Feliu">
+                    <img class="img-responsive" src="img/album/festa_major_13/5.JPG" />
+                </a>
+            </div>
+            <div class="photo">
+                <a href="img/album/festa_major_13/6.JPG" rel="lightbox[penguins]" title="Concert Sant Feliu">
+                    <img class="img-responsive" src="img/album/festa_major_13/6.JPG" />
+                </a>
+            </div>
+            <div class="photo">
+                <a href="img/album/festa_major_13/7.JPG" rel="lightbox[penguins]" title="Concert Sant Feliu">
+                    <img class="img-responsive" src="img/album/festa_major_13/7.JPG" />
+                </a>
+            </div>
+            <div class="photo foto_mig">
+                <a href="img/album/festa_major_13/8.JPG" rel="lightbox[penguins]" title="Concert Sant Feliu">
+                    <img class="img-responsive" src="img/album/festa_major_13/8.JPG" />
+                </a>
+            </div>
+        </div>
+        <div class="seccio_videos">
+            <div class="video">
+                <iframe src="//www.youtube.com/embed/l22hx1jT-z0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video">
+                <iframe src="//www.youtube.com/embed/tb5mbXAtmkE" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+    <div class="discography" id="discography">
+        <div class="titol">
+            <img src="img/imatge_titol.png" class="imatge_amaga" />
+            <div class="text_titol">
+                <div class="pull-left shuffle" style="font-family:bodoni_LT_Poster_Italic; font-size: 21pt;">
+                    Discography
+                </div>  
+                <div class="pull-right buenri" style="font-family:bodoni_LT_Poster_Italic; font-size: 14pt;">
+                    The Penguins Band
+                </div>
+            </div>
+        </div>
+        <div class="separador_titol"></div>
+        <div class="discos">
+            <div class="disc">
+                <div class="portada pull-left">
+                    <img class="img-responsive" src="img/discos/portada_SCD.png" /> 
+                </div>
+                <div class="info pull-right">
+                    <div class="titol_disc">Shuffle, Cut & Deal</div>
+                    <div class="discografica">Buenritmo 2014</div>
+                    <div class="descargar">
+                        <a target="_blank" href="https://play.spotify.com/album/35AUCdJtvurAvxrtcmoEKe">Escolta'l</a>
+                    </div>
+                    <div class="text"></div>
+                </div>
+            </div>
+            <div class="separador_discos"></div>
+            <div class="disc">
+                <div class="portada pull-left">
+                    <img class="img-responsive" src="img/discos/portada_RPX2.png" /> 
+                </div>
+                <div class="info pull-right">
+                    <div class="titol_disc">Pugem al tren</div>
+                    <div class="discografica">Buenritmo 2014</div>
+                    <div class="descargar">
+                        <a class="pull-left" target="_blank" href="https://play.spotify.com/album/30NfeIz236461urK0c50F2">Escolta'l</a>
+                        <div class="punt">·</div>
+                        <a target="_blank" href="http://productesdelaterra.cat/estil-ska-mestissatge-en-catala/11960-comprar-cd-reggae-per-xics-pugem-al-tren-1562570664840.html">Compra'l</a>
+                    </div>
+                    <div class="text"></div>
+                </div>
+            </div>
+            <div class="separador_discos"></div>
+            <div class="disc">
+                <div class="portada pull-left">
+                    <img class="img-responsive" src="img/discos/portada_Nadal_Blanc.png" /> 
+                </div>
+                <div class="info pull-right">
+                    <div class="titol_disc">Reggae Per Xics. Feliç 2013</div>
+                    <div class="discografica">The Penguins 2013</div>
+                    <div class="descargar">
+                        <a target="_blank" href="https://play.spotify.com/album/0umkaLQDaqSyqsUQiFQGIk">Escolta'l</a>
+                    </div>
+                    <div class="text"></div>
+                </div>
+            </div>
+            <div class="separador_discos"></div>
+            <div class="disc">
+                <div class="portada pull-left">
+                    <img class="img-responsive" src="img/discos/portada_White_Christmas.png" /> 
+                </div>
+                <div class="info pull-right">
+                    <div class="titol_disc">Singles 4 Christmas. Feliç 2013</div>
+                    <div class="discografica">The Penguins 2013</div>
+                    <div class="descargar"></div>
+                    <div class="text"></div>
+                </div>
+            </div>
+            <div class="separador_discos"></div>
+            <div class="disc">
+                <div class="portada pull-left">
+                    <img class="img-responsive" src="img/discos/portada_RPX.png" /> 
+                </div>
+                <div class="info pull-right">
+                    <div class="titol_disc">Reggae Per Xics. The Penguins</div>
+                    <div class="discografica">Buenritmo 2012</div>
+                    <div class="descargar">
+                        <a class="pull-left" target="_blank" href="https://play.spotify.com/album/6zpWybCzIRogxbdfC6zeAq">Escolta'l</a>
+                        <div class="punt">·</div>
+                        <a target="_blank" href="http://productesdelaterra.cat/estil-ska-mestissatge-en-catala/10099-comprar-cd-the-penguins-reggae-per-xics-1562100001046.html">Compra'l</a>
+                    </div>
+                    <div class="text"></div>
+                </div>
+            </div>
+            <div style="clear:both; padding-bottom: 30px;"></div>
+        </div>
+    </div>
+    <footer class="footer navbar navbar-fixed-bottom">
+        <div class="container">
+            <div class="pull-left xarxes">
+                <a class="fb" target="_blank" alt="facebook" title="facebook" href="https://www.facebook.com/pages/The-Penguins-Ska-Band/206613349357992?ref=ts&fref=ts"></a>
+                <a class="tw" target="_blank" alt="twitter" title="twitter" href="https://twitter.com/ThePenguinsSka"></a>
+                <a class="in" target="_blank" alt="instagram" title="instagram" href="http://www.google.es"></a>
+            </div>
+            <div class="pull-right mail" style="font-family:bodoni_LT_Poster_Italic;">
+                <a href="mailto:info@thepenguinsband.com" target="_top">info@thepenguinsband.com</a>
+            </div>
+        </div>
+</footer>
+</div>
+</body>
+</html>                                		

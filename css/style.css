@@ -1,0 +1,490 @@
+@font-face {
+    font-family: bodoni_LT_Poster;
+    src: url(../fonts/bodoni/Bodoni_LT_Poster/LTe50101.ttf);
+}
+@font-face {
+    font-family: bodoni_LT_Poster_Italic;
+    src: url(../fonts/bodoni/Bodoni_LT_Poster_Italic/LTe50627.ttf);
+}
+@font-face {
+    font-family: Bodoni_Twelve_OS_ITC_TT_BookIta;
+    src: url(../fonts/bodoni/Bodoni_Twelve_OS_ITC_TT_BookIta/BOD12OWI.TTF);
+}
+
+.container {
+    font-family: Bodoni_Twelve_OS_ITC_TT_BookIta;
+    font-size: 13pt;
+}
+
+nav {
+    font-family: bodoni_LT_Poster_Italic;
+    font-size: 10pt;
+}
+.compra {
+    font-family: bodoni_LT_Poster_Italic;
+    font-size: 15pt;
+}
+
+
+body{
+	background-color:#1A1919;
+    color:#FFF !important;
+}
+
+.container {
+	text-align:center;
+}
+
+.home {
+    color:#FFF;
+}
+
+.navbar
+{   
+    background-image: none;
+    background-color: #1A1919 !important;
+}
+
+.navbar-nav li a {
+    color:#FFF !important;
+}
+
+.navbar-nav li a:hover {
+        color:#E26A2E !important;
+    }
+
+.navbar-nav li.active {
+    color:#E26A2E !important;
+}
+
+.compra a {
+    color:white;
+}
+
+.compra a:hover {
+        color:#E26A2E;
+        text-decoration: none;
+    }
+
+.carousel-inner > .item > img {
+    margin: 0 auto;
+    width: 100%;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.calendar {
+    padding-top: 15px;
+}
+
+
+.linia {
+    height: 1px;
+    width: 100%;
+    background-color: #E26A2E;
+    clear: both;
+}
+
+.discography .discos .disc {
+    padding: inherit;
+    width: 100%;
+}
+
+.discography .discos .disc .portada {
+    width: 32%;
+}
+
+.discography .discos .disc .info {
+    width: 68%;
+    text-align: left;
+}
+
+.discography .discos .disc .info .titol_disc{
+    font-weight: bold;
+}
+
+.discography .discos .separador_discos {
+    padding-bottom: 70px;
+    clear: both;
+}
+
+.separador_titol {
+    padding-bottom: 30px;
+    clear: both;
+}
+
+.discography {
+    padding-bottom: 32px;
+}
+
+.discography .discos .disc .info .descargar a{
+    color: #E26A2E;
+    font-size: 17pt;
+}
+
+.discography .discos .disc .info .descargar div {
+    color: #E26A2E;
+    padding-left: 15px;
+    padding-right: 12px;
+    float: left;
+}
+
+.discography .discos .disc .info .descargar a:hover{
+    text-decoration: none;
+}
+
+
+footer.footer .container div.mail a {
+    text-decoration: none;
+    color: #FFF;
+    font-size: 12pt;
+}
+
+footer.footer .container div a:hover {
+    color: #E26A2E;
+}
+
+footer.footer .container .xarxes a.fb {
+ width: 20px;
+ height:20px;
+ margin-top: 3px;
+ margin-left: -5px;
+ float: left;
+ display:block;
+ background: url('../img/xarxes/FBdesactivat_petit.png');
+}
+
+footer.footer .container .xarxes a.fb:hover {
+   background-image: url('../img/xarxes/FBactivat_petit.png');
+}
+
+footer.footer .container .xarxes a.tw {
+ width: 20px;
+ height:20px;
+ margin-top: 5px;
+ margin-left: 5px;
+ float: left;
+ display:block;
+ background: url('../img/xarxes/TWITTERdesactivat_petit.png');
+}
+
+footer.footer .container .xarxes a.tw:hover {
+   background-image: url('../img/xarxes/TWITTERactivat_petit.png');
+}
+
+footer.footer .container .xarxes a.in {
+ width: 20px;
+ height:20px;
+ margin-top: 3px;
+ margin-left: 9px;
+ float: left;
+ display:block;
+ background: url('../img/xarxes/INSTAdesactivat_petit.png');
+}
+
+footer.footer .container .xarxes a.in:hover {
+   background-image: url('../img/xarxes/INSTAactivat_petit.png');
+}
+
+.orange {
+    color: #E26A2E;
+}
+
+#calendari .calendari-titols div {
+    font-weight: bold;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width:320px)
+and (max-device-width:480px) {
+    .home {
+        padding-top: 50px;
+    }
+
+    .imatge_amaga {
+        display: none;
+    }
+    .esquerra {
+        float: none;
+        width: 100%;
+    }
+
+    .esquerra .imatge_disc {
+        width: 80%;
+    }
+
+    .esquerra .spotify {
+    }
+
+    .esquerra .spotify iframe{
+    }
+
+    .dreta {
+        font-size: 11pt;
+        text-align: left;
+        width: 95%;
+        padding-left: 5%;
+    }
+
+    .shuffle {
+        font-size: 15pt !important;
+        width: 100%;
+        text-align: center;
+    }
+
+    .buenri {
+        font-size: 12pt !important;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .photos .seccio_photos .photo a img {
+        width: 100%;
+    }
+
+    .photos .seccio_videos .video iframe {
+        width: 100%;
+    }
+
+    .discography .discos .disc .info {
+        font-size: 15pt;
+    }
+
+    footer.footer
+    {   
+        border-top: 1px solid #FFF;
+        min-height: 20px;
+    }
+
+    footer .container {
+        font-size: 9pt;
+        font-weight: normal;
+    }
+
+    footer.footer .container div.mail a {
+        font-size: 9pt !important;
+        padding-top: 3px;
+    }
+
+    .calendari-titols {
+        clear:both;
+    }
+}
+ 
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px) {
+/* Styles */
+    .imatge_amaga {
+        display: none;
+    }
+}
+ 
+/* Desktops and laptops ----------- */
+@media only screen
+and (min-width : 1224px) {
+/* Styles */
+    
+    body div.container {
+        width:1170px;
+        text-align:center;
+    }
+
+    .navbar .navbar-inner {
+        text-align: center;
+        width: 1140px;
+    }
+
+    .navbar-header {
+        /*padding: 4px !important;*/
+    }
+
+    .navbar-nav li a {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+
+    .nav > li > a {
+        padding: 10px 12px;
+    }
+
+    footer.footer
+    {   
+        border-top: 2px solid #FFF;
+        min-height: 30px;
+    }
+
+    footer .container {
+        text-align: center; 
+        width: 1140px;
+    }
+
+    footer .container .mail a {
+        font-size: 14pt;
+    }    
+
+
+    .home {
+        margin-top: 42px;
+    }
+
+    .titol {
+        position: relative;
+    }
+
+    .text_titol {
+        top:37px;
+        left:9px;
+        position: absolute;
+        width: 99%;
+        font-size:19pt;
+    }
+
+    .navbar .nav,
+    .navbar .nav > li {
+      float:none;
+      display:inline-block;
+      *display:inline; /* ie7 fix */
+      *zoom:1; /* hasLayout ie7 trigger */
+      vertical-align: top;
+    }
+
+    .navbar-inner {
+      text-align:center;
+        margin:0 auto;
+    }
+
+    .shuffle {
+        text-align: left;
+    }
+
+    .esquerra {
+        float:left;
+        width: 30%;
+        text-align: left;
+    }
+
+    .esquerra .imatge_disc {
+        width: 300px;
+    }
+
+    .esquerra .spotify {
+        padding-top: 10px;
+        width:100%;
+    }
+
+    .esquerra .spotify iframe{
+        width: 300px;
+        height: 380px;
+    }
+
+    .row {
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .dreta {
+        float:right;
+        text-align: left;
+        width: 70%;
+    }
+
+    .buenri {
+        padding-top: 10px;
+    }
+
+    #topWrapper {
+        width: 100%;
+        text-align:center;
+        margin:0 auto;
+        position:fixed;
+        z-index:9999;
+        width: 100%;
+        float:clear;
+        background-image: none;
+        text-align:center;
+        min-height: 42px;
+        border-bottom: 2px solid #FFF;
+    }
+
+    .photos .seccio_photos .photo {
+        float: left;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .photos .seccio_photos .photo a img {
+        width: 365px;
+    }
+
+    .photos .seccio_photos .foto_mig {
+        padding-left: 21px;
+        padding-right: 21px;
+    }
+    .photos .seccio_videos {
+        height: 100%;
+        width: 100%;
+        clear: both;
+    }
+
+    .photos .seccio_videos .video {
+        float: left;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .photos .seccio_videos .video iframe {
+        width: 1140px;
+        height: 641px;
+    }
+
+    .discography .discos .disc {
+
+    }
+
+    .discography .discos .disc .portada {
+
+    }
+
+    .discography .discos .disc .info {
+        padding-left: 30px;
+    }
+
+    .discography .discos .disc .info .titol_disc{
+        font-size: 21pt;
+    }
+
+    #calendari {
+        text-align: left;
+        width: 100%;
+
+    }
+
+    #calendari .data {
+        float: left;
+        width: 15%;
+    }
+
+    #calendari .descripcio {
+        float: left;
+        width: 45%;
+    }
+
+    #calendari .lloc {
+        float: left;
+        width: 30%;
+    }
+
+    #calendari .hora {
+        float: left;
+        width: 10%;
+    }
+
+
+
+}
